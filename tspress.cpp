@@ -51,11 +51,14 @@ TsPress::TsPress(QWidget *parent)
     int width = availableSize.width();
     int height = availableSize.height();
     qDebug() << "Available dimensions " << width << "x" << height;
-    width *= 0.9; // 90% of the screen size
-    height *= 0.9; // 90% of the screen size
+    width *= 0.75; // 90% of the screen size
+    height *= 0.75; // 90% of the screen size
     qDebug() << "Computed dimensions " << width << "x" << height;
     QSize newSize( width, height );
 
+    setMinimumSize(newSize);
+    setMaximumSize(newSize);
+    
     setGeometry(
         QStyle::alignedRect( 
             Qt::LeftToRight,
@@ -64,11 +67,6 @@ TsPress::TsPress(QWidget *parent)
             qApp->desktop()->availableGeometry()
         )
     );
-    
-    setMinimumWidth(848);
-    setMinimumHeight(480);
-    setMaximumWidth(848);
-    setMaximumHeight(480);
     
     m_down.setX(-1);
     m_up.setX(-1);
