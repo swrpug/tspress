@@ -65,6 +65,11 @@ TsPress::TsPress(QWidget *parent)
         )
     );
     
+    setMinimumWidth(848);
+    setMinimumHeight(480);
+    setMaximumWidth(848);
+    setMaximumHeight(480);
+    
     m_down.setX(-1);
     m_up.setX(-1);
 
