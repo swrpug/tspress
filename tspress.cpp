@@ -43,6 +43,8 @@ TsPress::TsPress(QWidget *parent)
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
 
+    qDebug() << "width:" << width() << "height:" << height();
+    
     m_down.setX(-1);
     m_up.setX(-1);
 
