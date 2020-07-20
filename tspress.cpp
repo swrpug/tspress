@@ -37,6 +37,7 @@
 #include <qdebug.h>
 #include <qstyle.h>
 #include <QApplication>
+#include <QDesktopWidget>
 
 #define MIN_WIDTH_FOR_BUTTONS 500
 
@@ -45,6 +46,7 @@ TsPress::TsPress(QWidget *parent)
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
 
+    // Get screen size
     QSize availableSize =  qApp->desktop()->availableGeometry().size();
     int width = availableSize.width();
     int height = availableSize.height();
