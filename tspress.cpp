@@ -35,6 +35,8 @@
 #include <qevent.h>
 #include <qpainter.h>
 #include <qdebug.h>
+#include <qstyle.h>
+#include <QApplication>
 
 #define MIN_WIDTH_FOR_BUTTONS 500
 
@@ -43,7 +45,23 @@ TsPress::TsPress(QWidget *parent)
 {
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
 
-    qDebug() << "width:" << width() << "height:" << height();
+    QSize availableSize =  qApp->desktop()->availableGeometry().size();
+    int width = availableSize.width();
+    int height = availableSize.height();
+    qDebug() << "Available dimensions " << width << "x" << height;
+    width *= 0.9; // 90% of the screen size
+    height *= 0.9; // 90% of the screen size
+    qDebug() << "Computed dimensions " << width << "x" << height;
+    QSize newSize( width, height );
+
+    setGeometry(
+        QStyle::alignedRect( 
+            Qt::LeftToRight,
+            Qt::AlignCenter,
+            newSize,
+            qApp->desktop()->availableGeometry()
+        )
+    );
     
     m_down.setX(-1);
     m_up.setX(-1);
